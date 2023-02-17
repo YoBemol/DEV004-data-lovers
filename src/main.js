@@ -1,9 +1,11 @@
-import { filterData, typeSpecies, filterEpisode } from './data.js';
+import { filterData, typeSpecies, filterEpisode, typeName, resultSort } from './data.js';
 import data from './data/rickandmorty/rickandmorty.js';
-// data de interes
+// data principal de interes y copia de data para sort
 const dataRM = data.results;
+const copiadataRM = [...data.results]//desestructurar data para sort
 //elementos DOM
-const prueba = document.getElementById("prueba");
+const reset = document.getElementById("reset");
+const order = document.getElementById("order");
 const episodes = document.getElementById("episodes");
 const species = document.getElementById("species");
 const mainGallery = document.getElementById("root");
@@ -34,12 +36,10 @@ species.addEventListener("change", function () {
   const specie = species.value;
   const resultSpecie = filterData(dataRM, specie);
 
-  console.log("result", resultSpecie);
   mainGallery.innerHTML = cards(resultSpecie);
 })
 
 //console.log(cards(resultSpecie))
-console.log(typeSpecies(dataRM));
 
 mainGallery.innerHTML = cards(dataRM);
 //console.log(example, data);
@@ -53,4 +53,18 @@ episodes.addEventListener("change", function () {
 
   console.log("result", resultEpisode);
   mainGallery.innerHTML = cards(resultEpisode);
+})
+mainGallery.innerHTML = cards(dataRM);
+
+//metodo sort ordenado de A - Z
+order.addEventListener("click", function () {
+  const nameSort = resultSort(copiadataRM);
+
+  mainGallery.innerHTML = cards(nameSort)
+})
+console.log(resultSort(copiadataRM))
+
+//recargar pagina principal, resetear filtros
+reset.addEventListener("click", function(){
+  location.reload();
 })

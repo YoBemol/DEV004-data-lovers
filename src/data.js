@@ -7,8 +7,8 @@ export const filterData = (data, value) => {
 };
 
 //Para conocer todos los tipos de especies
-export const typeSpecies =  (data) => {
-  let kindSpecie = data.map(data=> data.species);
+export const typeSpecies = (data) => {
+  let kindSpecie = data.map(data => data.species);
   return kindSpecie;
 }
 
@@ -18,11 +18,26 @@ export const filterEpisode = (data, value) => {
   //console.log(filterSpecies);
   return kindEpisode;
 };
+//mapea nombres y los convierte a string no funciona para este ejercicio
+export const typeName = (data) => {
+  return data.map(data => data.name)
+              .sort()
+};
 
 
-
-
-
+//ordenando el array mapeado que contiene los valores reducidos
+export const resultSort = (data) => {
+  data.sort((a, b) => {
+    if (a.name > b.name) {
+      return 1;
+    }
+    if (a.name < b.name) {
+      return -1;
+    }
+    return 0;// no funciona return 0 ni return typeName aqui
+  })
+  return data;
+}
 
 /*export const anotherExample = () => {
   return 'OMG';

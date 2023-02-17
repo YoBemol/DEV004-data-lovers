@@ -39,10 +39,20 @@ body{
 	margin: 0 1.25rem;
 }
 
-.navbar ul li{
+.navbar ul button{
+	display:inline-flex;
 	list-style: none;
 	margin: 0 1.25rem;
 	font-size: 1.2rem;
+	cursor: pointer;
+	background-color: #1E2838;
+	color: #e4ebed;
+	border: none;
+}
+
+.navbar ul button:hover {
+	color: #B2DF28;
+	
 }
 
 #root {
