@@ -1,8 +1,8 @@
 // Filtro por especies
 export const filterData = (data, value) => {
-  const filterSpecies = data.filter(data => data.species === value);
+  return data.filter(data => data.species === value);
   //console.log(filterSpecies);
-  return filterSpecies;
+  
 };
 
 //Para conocer todos los tipos de genero aux calculo

@@ -1,4 +1,4 @@
-import {  sortDataAZ, filterStatus, filterEpisode,filterData, mapGender, suma, mapStatus, mapSpecies } from '../src/data.js'; 
+import { sortDataAZ, filterStatus, filterEpisode, filterData, mapGender, suma, mapStatus, mapSpecies } from '../src/data.js';
 
 describe('sortDataAZ', () => {
   const dataPrueba = [
@@ -33,11 +33,11 @@ describe('sortDataAZ', () => {
     expect(sortDataAZ(dataPrueba)).toEqual([
 
       { "name": "Beth" },
-  
+
       { "name": "Morty" },
-  
+
       { "name": "Rick" }
-  
+
     ])
   });
 });
@@ -56,9 +56,12 @@ describe('filterData', () => {
   });
 
   it('retorna Human si esta dentro del array de objetos', () => {
-    
-    expect(filterData(dataPrueba,"Human")).toEqual([{"species": "Human"}]);
+
+    expect(filterData(dataPrueba, "Human")).toEqual([{ "species": "Human" }]);
   });
+  // it('', ()=>{
+  //   expect(filterData('', 'Human').toBe(false))
+  // })
 });
 
 
@@ -81,7 +84,7 @@ describe('filterEpisode', () => {
     expect(typeof filterEpisode).toBe('function');
   });
   it('retorna solo episodio 1', () => {
-    expect(episodePrueba).toEqual([{"episode": "episode/1"},{"episode": "episode/1"}] 
+    expect(episodePrueba).toEqual([{ "episode": "episode/1" }, { "episode": "episode/1" }]
     )
   });
 });
@@ -110,18 +113,18 @@ describe('filterStatus', () => {
 describe('mapGender', () => {
   const dataPrueba = [
 
-    { "gender": "Female" },
+    { "status": "Alive" ,"gender": "Female" },
 
-    { "gender": "Male"},
+    { "status": "Alive", "gender": "Male" },
 
-    { "gender": "unknown" }
+    { "status": "Alive", "gender": "unknown" }
 
-  ] 
+  ]
   it('is a function', () => {
     expect(typeof mapGender).toBe('function');
   });
   it('retorna el array que contiene los elementos de gender', () => {
-    expect(mapGender(dataPrueba, "Male")).toEqual(["Female", "Male", "unknown"])
+    expect(mapGender(dataPrueba, "gender")).toEqual(["Female", "Male", "unknown"])
   });
 });
 
@@ -133,7 +136,7 @@ describe('suma', () => {
     expect(typeof suma).toBe('function');
   });
   it('retorna arrays nombreData y sumaData', () => {
-    expect(suma(dataPrueba)).toEqual({"nombreData":["Female", "Male", "unknown"], "sumaData":[4, 2, 1]})
+    expect(suma(dataPrueba)).toEqual({ "nombreData": ["Female", "Male", "unknown"], "sumaData": [4, 2, 1] })
   });
 });
 
@@ -142,13 +145,13 @@ describe('mapStatus', () => {
 
     { "status": "Alive" },
 
-    { "status": "unknown"},
+    { "status": "unknown" },
 
     { "status": "Dead" }
 
   ];
   it('retorna el array que contiene los elementos de Status', () => {
-    expect(mapStatus(dataPrueba, "Dead")).toEqual(["Alive", "unknown", "Dead"])
+    expect(mapStatus(dataPrueba, "status")).toEqual(["Alive", "unknown", "Dead"])
   });
 });
 
@@ -157,12 +160,12 @@ describe('mapSpecies', () => {
 
     { "species": "Human" },
 
-    { "species": "Humanoid"},
+    { "species": "Humanoid" },
 
     { "species": "Animal" }
 
   ];
   it('retorna el array que contiene los elementos de Species', () => {
-    expect(mapSpecies(dataPrueba, "Human")).toEqual(["Human", "Humanoid", "Animal"])
+    expect(mapSpecies(dataPrueba, "species")).toEqual(["Human", "Humanoid", "Animal"])
   });
 });

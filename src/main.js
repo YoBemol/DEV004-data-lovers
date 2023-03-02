@@ -16,7 +16,7 @@ const status = document.getElementById("status")
 //Presentacion total personajes
 const cards = function characterGallery(data) {
   let elements = "";
-  data.forEach(element => {
+/*  data.forEach(element => {
     elements = elements + `
   <div id="image">
   <div id="card">
@@ -27,10 +27,26 @@ const cards = function characterGallery(data) {
   <p><b>Location:</b> ${element.location.name}</p>
   </div>
   </div>
+  `;*/
+  for(let element in data){
+    
+    elements = elements +
+    `
+  <div id="image">
+  <div id="card">
+  <h1 id="tittle">${element.name}</h1>
+  <img id="photo" src=${element.image}>  
+  <p><b>Gender:</b> ${element.gender}</p>
+  <p><b>Origin:</b> ${element.origin.name}</p>
+  <p><b>Location:</b> ${element.location.name}</p>
+  </div>
+  </div>
   `;
-  });
+  }
   return elements;
-}
+  };
+  
+
 
 
 //filtro de personajes por especie
@@ -80,8 +96,8 @@ recargar.addEventListener('click', function () {
 
 //Presentar tabla estadistica
 const estadistica = document.getElementById('stats');
-estadistica.addEventListener('click', tablas); 
-function tablas (e) {
+estadistica.addEventListener('click', tablas);
+function tablas(e) {
   //se ordena los datos mapeados 
   const arrayMap = mapGender(copiadata).sort();
   //guardamos la suma de cada elemento repetido y nombre elemento
@@ -144,7 +160,7 @@ function tablas (e) {
   `
 
   //se ordena los datos mapeados 
-  const arraySpecies = mapSpecies(copiadata).sort();   
+  const arraySpecies = mapSpecies(copiadata).sort();
   //guardamos la suma de cada elemento repetido y nombre elemento
   const sumaSp = suma(arraySpecies);
   //console.log(sumaSp);
@@ -220,9 +236,9 @@ function tablas (e) {
   const oculto = document.querySelector(".filter-elements");
   if (oculto.style.display === "none") {
     oculto.style.display = "block";
-} else {
+  } else {
     oculto.style.display = "none";
-    
-}
 
-};
+  }
+
+}
